@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models;
 use App\Models\Article;
 
 class ArticleController extends Controller
 {
 
-    public function show(Article $slug)
+    public function show($slug)
     {
-        dd($article);
+        return view('article', ['slug' => $slug]);
     }
 
 }
