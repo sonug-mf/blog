@@ -27,7 +27,6 @@ Route::middleware('guest')->group(function(){
     Route::post('/login', [AuthController::class, 'authenticate']);
 });
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth.basic');
-
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth.basic')->name('dashboard');
 
 
