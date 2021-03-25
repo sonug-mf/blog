@@ -33,6 +33,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth.basic')->group(function(){
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
