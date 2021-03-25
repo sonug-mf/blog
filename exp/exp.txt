@@ -1,0 +1,36 @@
+
+	6.5 years
+	|
+	|----- Frontend
+	|			|----- HTML
+	|			|----- CSS
+	|			|----- Javascript
+	|			|----- Jquery
+	|			|----- Ajax
+	|
+	|------ Backend
+	|			|----- Python (3 months)
+	|			|			|
+	|			|			|----- Created Lambda Function for Video & Image Cobranding
+	|			|
+	|			|	
+	|			|----- Node (2 months)
+	|			|			|
+	|			|			|----- Local Env Setup
+	|			|			|----- Expressjs
+	|			|			|----- Form handling
+	|			|			|----- File System Handling	
+	|			|
+	|			|	
+	|			|----- PHP (6 yrs.)
+	|			|			|
+	|			|			|----- Core PHP (2014-2021)
+	|			|			|----- WordPress (6 months)
+	|			|			|----- Codeigniter (2yrs)
+	|			|			|----- Laravel (6 months)
+	|				
+	|----- Database
+	|			|
+	|           |----- Mysql(2014-2021)
+	|           |----- Oracle 12c(2017-2018)
+	|           |----- MongoDB(6 months)
