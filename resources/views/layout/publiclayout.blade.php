@@ -18,9 +18,11 @@
 
                 <div class="mt-8 md:mt-0">
                     <a href="/" class="text-xs font-bold uppercase">Home Page</a>
-
+                    
+                    @if (!isset($loginButtonHide) || $loginButtonHide !== true)
                     <a href="/login"
                        class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">Login</a>
+                    @endif
                 </div>
             </nav>
 

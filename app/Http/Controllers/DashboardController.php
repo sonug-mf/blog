@@ -8,16 +8,10 @@ use App\Http\Middleware\ActiveUser;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-    }
-    
-    public function dashboard()
+
+    public function dashboard(Request $request)
     {
         return view('admin.dashboard');
     }
-    
-    
-    
-    
+
 }

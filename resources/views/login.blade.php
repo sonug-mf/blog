@@ -1,3 +1,7 @@
+@php
+$loginButtonHide = true
+@endphp
+
 @extends('layout.publiclayout')
 
 @section('header-css')
@@ -17,7 +21,7 @@
 @endsection
 
 @section('main')
-<main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
+<main class="max-w-2xl mx-auto mt-10 lg:mt-20 space-y-6">
     <h1>Login Form</h1>
 
     <div class="col-span-10 bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
