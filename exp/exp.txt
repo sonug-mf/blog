@@ -4,6 +4,7 @@
 	|----- Frontend
 	|			|----- HTML
 	|			|----- CSS
+	|			|----- Bootstrap
 	|			|----- Javascript
 	|			|----- Jquery
 	|			|----- Ajax
@@ -11,7 +12,7 @@
 	|------ Backend
 	|			|----- Python (3 months)
 	|			|			|
-	|			|			|----- Created Lambda Function for Video & Image Cobranding
+	|			|			|----- Created Lambda Function for Video & Image Cobranding(Water Marking)
 	|			|
 	|			|	
 	|			|----- Node (2 months)

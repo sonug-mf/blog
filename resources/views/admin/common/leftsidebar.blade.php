@@ -2,7 +2,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="images/user.png" width="48" height="48" alt="User" />
+                    <img src="{{ asset('images/user.png') }}" width="48" height="48" alt="User" />
                 </div>
 
                 <div class="info-container">
@@ -28,13 +28,58 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
+                    <li class="{{ Request::route()->getName() === 'dashboard' ? 'active' : '' }}">
                         <a href="{{ Route('dashboard') }}">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
+                    
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Categories</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Actions</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="{{ Route('category.list') }}">List</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="{{ Route('category.create') }}">Create</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
 
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Article</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Actions</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="{{ Route('article.list') }}">List</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="{{ Route('article.create') }}">Create</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

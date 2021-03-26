@@ -2,31 +2,31 @@
 
 @section('css')
 <!-- Bootstrap Core Css -->
-<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
 <!-- Waves Effect Css -->
-<link href="plugins/node-waves/waves.css" rel="stylesheet" />
+<link href="{{ asset('plugins/node-waves/waves.css') }}" rel="stylesheet" />
 
 <!-- Animation Css -->
-<link href="plugins/animate-css/animate.css" rel="stylesheet" />
+<link href="{{ asset('plugins/animate-css/animate.css') }}" rel="stylesheet" />
 
 <!-- Bootstrap Material Datetime Picker Css -->
-<link href="plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+<link href="{{ asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
 
 <!-- Bootstrap DatePicker Css -->
-<link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+<link href="{{ asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet" />
 
 <!-- Wait Me Css -->
-<link href="plugins/waitme/waitMe.css" rel="stylesheet" />
+<link href="{{ asset('plugins/waitme/waitMe.css') }}" rel="stylesheet" />
 
 <!-- Bootstrap Select Css -->
-<link href="plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+<link href="{{ asset('plugins/bootstrap-select/css/bootstrap-select.css') }}" rel="stylesheet" />
 
 <!-- Custom Css -->
-<link href="css/style.css" rel="stylesheet">
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-<link href="css/themes/all-themes.css" rel="stylesheet" />
+<link href="{{ asset('css/themes/all-themes.css') }}" rel="stylesheet" />
 @endsection
 
 @section('main-section')
@@ -95,14 +95,11 @@
 
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    @if(strlen($data->profile_img) < 1)
-                                        $image_file_path = $data->profile_img;
-                                    @else
-                                        $image_file_path = "/images/user.png";
-                                    @endif
+                                    @php
+                                    $data->profile_img = (strlen($data->profile_img) < 1) ? "/images/user.png" : $data->profile_img;
+                                    @endphp
                                     
-                                    
-                                    <img src="{{ $image_file_path }}" class="img img-thumbnail" />
+                                    <img src="{{ $data->profile_img }}" class="img img-thumbnail" />
                                 </div>
                             </div>
 
@@ -210,36 +207,36 @@
 
 @section('js')
 <!-- Jquery Core Js -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
 <!-- Bootstrap Core Js -->
-<script src="plugins/bootstrap/js/bootstrap.js"></script>
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
 
 <!-- Select Plugin Js -->
-<script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+<script src="{{ asset('plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
 <!-- Slimscroll Plugin Js -->
-<script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="{{ asset('plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 
 <!-- Waves Effect Plugin Js -->
-<script src="plugins/node-waves/waves.js"></script>
+<script src="{{ asset('plugins/node-waves/waves.js') }}"></script>
 
 <!-- Autosize Plugin Js -->
-<script src="plugins/autosize/autosize.js"></script>
+<script src="{{ asset('plugins/autosize/autosize.js') }}"></script>
 
 <!-- Moment Plugin Js -->
-<script src="plugins/momentjs/moment.js"></script>
+<script src="{{ asset('plugins/momentjs/moment.js') }}"></script>
 
 <!-- Bootstrap Material Datetime Picker Plugin Js -->
-<script src="plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<script src="{{ asset('plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
 
 <!-- Bootstrap Datepicker Plugin Js -->
-<script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
 
 <!-- Custom Js -->
-<script src="js/admin.js"></script>
-<script src="js/pages/forms/basic-form-elements.js"></script>
+<script src="{{ asset('js/admin.js') }}"></script>
+<script src="{{ asset('js/pages/forms/basic-form-elements.js') }}"></script>
 
 <!-- Demo Js -->
-<script src="js/demo.js"></script>
+<script src="{{ asset('js/demo.js') }}"></script>
 @endsection

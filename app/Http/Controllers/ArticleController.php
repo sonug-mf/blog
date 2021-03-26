@@ -14,4 +14,9 @@ class ArticleController extends Controller
         return view('article', ['slug' => $slug]);
     }
 
+    public function list(){
+        $data = Article::where('status', 'active')->get();
+        
+        return view('admin.article.list', ['data' => $data]);
+    }
 }
