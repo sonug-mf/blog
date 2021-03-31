@@ -68,7 +68,10 @@
                                 <td><img src="{{ asset($record->image) }}" class="img img-thumbnail" /></td>
                                 <td>{{ $record->updated_at }}</td>
                                 <td>
-                                    <a href="{{ Route('article.create', $record->id) }}"><i class="material-icons" role="button" data-toggle="tooltip" data-placement="top" title="Edit Record">edit</i></a> <i class="material-icons">more_vert</i> <a href="{{ Route('article.delete', $record->id) }}"><i class="material-icons" role="button" data-toggle="tooltip" data-placement="top" title="Delete Record">delete</i></a> </td>
+                                    <a href="{{ Route('article.create', $record->id) }}"><i class="material-icons" role="button" data-toggle="tooltip" data-placement="top" title="Edit Record">edit</i></a>
+                                    <i class="material-icons">more_vert</i>
+                                    <form action="{{ Route('article.delete', $record->id) }}" method="post">@method('delete') @csrf <i role="button" class="material-icons" data-toggle="tooltip" data-placement="top" title="Delete Record" onclick="submit_delete(this)">delete</i></form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -119,4 +122,5 @@
 
 <!-- Demo Js -->
 <script src="{{ asset('js/demo.js') }}"></script>
+<script src="{{ asset('js/custom/article-list.js?v=1.0.0') }}"></script>
 @endsection

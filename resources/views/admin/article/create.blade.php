@@ -1,26 +1,29 @@
 @extends('layout.adminpanel')
 
 @section('css')
-<!-- Bootstrap Core Css -->
-<link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-
-<!-- Waves Effect Css -->
-<link href="{{ asset('plugins/node-waves/waves.css') }}" rel="stylesheet" />
-
-<!-- Animation Css -->
-<link href="{{ asset('plugins/animate-css/animate.css') }}" rel="stylesheet" />
-
-<!-- Wait Me Css -->
-<link href="{{ asset('plugins/waitme/waitMe.css') }}" rel="stylesheet" />
-
-<!-- Bootstrap Select Css -->
-<link href="{{ asset('plugins/bootstrap-select/css/bootstrap-select.css') }}" rel="stylesheet" />
-
-<!-- Custom Css -->
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
-<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-<link href="{{ asset('css/themes/all-themes.css') }}" rel="stylesheet" />
+    <!-- Bootstrap Core Css -->
+    <link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    
+    <!-- Waves Effect Css -->
+    <link href="{{ asset('plugins/node-waves/waves.css') }}" rel="stylesheet" />
+    
+    <!-- Animation Css -->
+    <link href="{{ asset('plugins/animate-css/animate.css') }}" rel="stylesheet" />
+    
+    <!-- Wait Me Css -->
+    <link href="{{ asset('plugins/waitme/waitMe.css') }}" rel="stylesheet" />
+    
+    <!-- Multi Select Css -->
+    <link href="{{ asset('plugins/multi-select/css/multi-select.css') }}"     rel="stylesheet">
+    
+    <!-- Bootstrap Select Css -->
+    <link href="{{ asset('plugins/bootstrap-select/css/bootstrap-select.css') }}"     rel="stylesheet" />
+    
+    <!-- Custom Css -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all     themes -->
+    <link href="{{ asset('css/themes/all-themes.css') }}" rel="stylesheet" />
 @endsection
 
 
@@ -37,7 +40,7 @@
             </div>
 
             <div class="body">
-                <form method="post" action="{{ Route('article.post') }}">
+                <form method="post" action="{{ Route('article.post') }}/{{ $data->id !== 0 ? $data->id : '' }}" autocomplete="off">
                     @csrf
                     @if($data->id !== 0)
                         @method('PUT')
@@ -52,13 +55,27 @@
                         <span class="text text-danger">@error('title') {{ $message }} @enderror</span>
                     </div>
 
+                    <div class="form-group">
+
+                    </div>
+
                     <!-- TinyMCE -->
                     <div class="body">
-                        <textarea id="tinymce" name="article_body"></textarea>
-                        <span class="text text-danger">@error('description') {{ $message }} @enderror</span>
+                        <textarea id="tinymce" name="article_body">{{ $data->description }}</textarea>
+                        <span class="text text-danger">@error('article_body') {{ $message }} @enderror</span>
                     </div>
                     <!-- #END# TinyMCE -->
                     
+                    <div class="body">
+                        <select id="optgroup" name="categories[]" class="ms" multiple="multiple">
+                            <optgroup label="Categories">
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ in_array($category->id, $selected) ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+                    </div>
+
                     <input type="hidden" name="record" value="{{ $data->id }}" />
                     <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
                 </form>
@@ -79,6 +96,9 @@
 <!-- Select Plugin Js -->
 <script src="{{ asset('plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
+<!-- Multi Select Plugin Js -->
+<script src="{{ asset('plugins/multi-select/js/jquery.multi-select.js') }}"></script>
+
 <!-- Slimscroll Plugin Js -->
 <script src="{{ asset('plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 
@@ -96,6 +116,9 @@
 
 <!-- Demo Js -->
 <script src="{{ asset('js/demo.js') }}"></script>
+
+<!-- Bootstrap Tags Input Plugin Js -->
+<script src="{{ asset('plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
 
 <script>
     //Textarea auto growth
@@ -119,5 +142,9 @@
 
     tinymce.suffix = ".min";
     tinyMCE.baseURL = '../../plugins/tinymce';
+    
+    //Multi-select
+    $('#optgroup').multiSelect({ selectableOptgroup: true });
+
 </script>
 @endsection

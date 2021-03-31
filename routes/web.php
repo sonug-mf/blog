@@ -9,6 +9,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Models\Article;
 
 /*
   |--------------------------------------------------------------------------
@@ -32,7 +33,10 @@ Route::middleware('auth.basic')->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     
 
-    Route::get('article/delete/{id}', [ArticleController::class, 'delete'])->name('article.delete');
+    Route::delete('article/delete/{id}', function($id = 0){
+        Article::destroy($id);
+        return redirect(Route('article.list'));
+    })->name('article.delete');
 
     Route::get('/article/list', [ArticleController::class, 'list'])->name('article.list');
 
@@ -40,7 +44,7 @@ Route::middleware('auth.basic')->group(function () {
     
     Route::post('/article/submit', [ArticleController::class, 'submit'])->name('article.post');
 
-    Route::put('/article/submit', [ArticleController::class, 'edit']);
+    Route::put('/article/submit/{id}', [ArticleController::class, 'edit']);
 
 
 
