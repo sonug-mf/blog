@@ -80,6 +80,22 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">swap_calls</i>
+                            <span>Users Registration</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{ Route('users.list') }}">List</a>
+                            </li>
+                            
+                            <li>
+                                <a href="{{ Route('users.register') }}">Create</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

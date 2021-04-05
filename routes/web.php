@@ -1,15 +1,16 @@
 <?php
 
+use App\Models\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use App\Models\Article;
+use App\Http\Controllers\DashboardController;
 
 /*
   |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::middleware('auth.basic')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     
-
+    //delete route
     Route::delete('article/delete/{id}', function($id = 0){
         Article::destroy($id);
         return redirect(Route('article.list'));
@@ -46,9 +47,7 @@ Route::middleware('auth.basic')->group(function () {
 
     Route::put('/article/submit/{id}', [ArticleController::class, 'edit']);
 
-
-
-
+    //category route
     Route::get('category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
 
     Route::get('/categories/list', [CategoryController::class, 'list'])->name('category.list');
@@ -58,6 +57,13 @@ Route::middleware('auth.basic')->group(function () {
     Route::post('/categories/submit', [CategoryController::class, 'submit'])->name('category.post');
 
     Route::put('/categories/submit', [CategoryController::class, 'edit']);
+
+    //users registration route
+    Route::get('/users/registration', [UserController::class, 'register'])->name('users.register');
+    Route::post('/users/registration', [UserController::class, 'store']);
+    
+    Route::get('/users/list', [UserController::class, 'index'])->name('users.list');
+    
 
 });
 
